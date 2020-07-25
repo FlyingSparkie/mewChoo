@@ -1,5 +1,5 @@
 # mewChoo
-Designed Mew Choo in Blender then imported to Processing using Flocking
+Designed Mew Choo in Blender then imported to Processing using simulation of Flocking
 
 make a folder in processing called mewchoo(just to remember where it is). copy all the files into that folder. 
 Open Processing then select open file, then select Flocking.pde.

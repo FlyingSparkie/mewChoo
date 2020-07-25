@@ -83,19 +83,24 @@ class Boid {
 
   void render() {
     // Draw a triangle rotated in the direction of velocity
-    float theta = velocity.heading2D() + radians(90);
+    float theta = velocity.heading() + radians(90);
     // heading2D() above is now heading() but leaving old syntax until Processing.js catches up
     
     fill(200, 100);
     stroke(255);
     pushMatrix();
     translate(position.x, position.y);
-    rotate(theta);
-    beginShape(TRIANGLES);
-    vertex(0, -r*2);
-    vertex(-r, r*2);
-    vertex(r, r*2);
-    endShape();
+     rotate(theta);
+    rotateX(PI);
+   
+    //lights();
+    scale(10);
+    shape(mewChoo);
+    //beginShape(TRIANGLES);
+    //vertex(0, -r*2);
+    //vertex(-r, r*2);
+    //vertex(r, r*2);
+    //endShape();
     popMatrix();
   }
 
@@ -163,11 +168,12 @@ class Boid {
       sum.div((float)count);
       // First two lines of code below could be condensed with new PVector setMag() method
       // Not using this method until Processing.js catches up
-      // sum.setMag(maxspeed);
+      //sum.setMag(maxspeed);
 
       // Implement Reynolds: Steering = Desired - Velocity
       sum.normalize();
-      sum.mult(maxspeed);
+      //sum.mult(maxspeed);
+      sum.setMag(maxspeed);
       PVector steer = PVector.sub(sum, velocity);
       steer.limit(maxforce);
       return steer;
@@ -199,4 +205,3 @@ class Boid {
     }
   }
 }
-
